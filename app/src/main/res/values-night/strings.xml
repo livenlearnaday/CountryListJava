@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CountryListJava</string>
+    <string name="country">Country:</string>
+    <string name="flag">flag image</string>
+
+    <string name="refresh_menu">refresh menu</string>
+    <string name="exit_menu">exit menu</string>
+    <string name="filter_menu">filter menu</string>
+</resources>

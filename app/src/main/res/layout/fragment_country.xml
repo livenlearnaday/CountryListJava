@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:tag="country_fragment_tag"
+android:id="@+id/country_fragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+
+ />
+
+
+
+<androidx.recyclerview.widget.RecyclerView
+
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/myToolbar">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="@dimen/dimen_100dp"
+        android:layout_height="@dimen/dimen_100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_120dp"
+        />
+
+
+
+</RelativeLayout>

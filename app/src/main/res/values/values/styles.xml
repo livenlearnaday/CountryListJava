@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--         so that no name appear on the title bar -->
+        <!--        <item name="android:windowNoTitle">false</item>-->
+
+    </style>
+
+</resources>
+
+
+    <!--    Another easy way is to make your theme a child of Theme.AppCompat.Light.NoActionBar like so:-->
+
+    <!--<style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--...-->
+    <!--</style>-->
+
+
+    <!--    Add single line android:theme="@style/AppTheme.NoActionBar" to activity in AndroidManifest and you've done.-->
+
+    <!--    AndroidManifest.xml:-->
+
+    <!--<activity android:name=".activity.YourActivity"-->
+    <!--android:theme="@style/AppTheme.NoActionBar">&lt;!&ndash; ADD THIS LINE &ndash;&gt;-->
+
+    <!--styles.xml-->
+
+    <!--<style name="AppTheme.NoActionBar">-->
+    <!--    <item name="windowActionBar">false</item>-->
+    <!--    <item name="windowNoTitle">true</item>-->
+    <!--</style>-->
+
+
