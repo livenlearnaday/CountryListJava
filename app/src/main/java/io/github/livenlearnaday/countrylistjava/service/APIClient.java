@@ -11,7 +11,7 @@ public class APIClient {
 
 
     private static APIClient instance = null;
-    private APIInterface myApi;
+    private final APIInterface myApi;
 
     private APIClient() {
 

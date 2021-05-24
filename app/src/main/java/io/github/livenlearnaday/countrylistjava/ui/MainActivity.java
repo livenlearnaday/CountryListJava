@@ -5,8 +5,6 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import io.github.livenlearnaday.countrylistjava.R;
-import io.github.livenlearnaday.countrylistjava.data.entity.Country;
+
 import io.github.livenlearnaday.countrylistjava.databinding.ActivityMainBinding;
 import io.github.livenlearnaday.countrylistjava.ui.fragment_country.CountryFragment;
 

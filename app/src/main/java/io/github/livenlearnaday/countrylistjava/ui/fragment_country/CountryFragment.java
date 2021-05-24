@@ -1,13 +1,11 @@
 package io.github.livenlearnaday.countrylistjava.ui.fragment_country;
 
-import android.os.Build;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -31,12 +29,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
-import static io.github.livenlearnaday.countrylistjava.utils.Constant.ARG_FLAG;
+
 
 public class CountryFragment extends Fragment {
 
     private RecyclerView mCountryFragmentRecyclerView;
-    private CountryFragmentAdapter mCountryFragmentAdapter;
     private ProgressBar progressBar;
     APIInterface apiInterface;
     private FragmentCountryBinding binding;
@@ -77,11 +74,11 @@ public class CountryFragment extends Fragment {
         View view = binding.getRoot();
 
         mCountryList = new ArrayList<>();
-        mFragmentContainerId = getArguments().getInt("fragment_container_id");
+        if (getArguments() != null) {
+            mFragmentContainerId = getArguments().getInt("fragment_container_id");
+        }
 
         getCountryListData();
-
-
 
 
         return view;
@@ -116,7 +113,7 @@ public class CountryFragment extends Fragment {
 
         try {
 
-            Call<List<Country>> call = APIClient.getInstance().getMyApi().getAllCountriesNameFlag();
+            Call<List<Country>> call = APIClient.getInstance().getMyApi().getAllCountries();
 
 
             call.enqueue(new Callback<List<Country>>() {
@@ -148,7 +145,7 @@ public class CountryFragment extends Fragment {
     /*Method to generate List of data using RecyclerView with custom adapter*/
     private void generateDataList(List<Country> countryList) {
 
-        mCountryFragmentAdapter = new CountryFragmentAdapter(getActivity(), countryList, mFragmentContainerId);
+        CountryFragmentAdapter mCountryFragmentAdapter = new CountryFragmentAdapter(getActivity(), countryList, mFragmentContainerId);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
         binding.recyclerView.setAdapter(mCountryFragmentAdapter);

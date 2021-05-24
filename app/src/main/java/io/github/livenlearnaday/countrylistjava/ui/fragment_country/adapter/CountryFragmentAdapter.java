@@ -2,8 +2,6 @@ package io.github.livenlearnaday.countrylistjava.ui.fragment_country.adapter;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,40 +12,33 @@ import java.util.List;
 import io.github.livenlearnaday.countrylistjava.R;
 import io.github.livenlearnaday.countrylistjava.data.entity.Country;
 import io.github.livenlearnaday.countrylistjava.databinding.CountryListItemBinding;
+import io.github.livenlearnaday.countrylistjava.utils.MessageUtils;
 import timber.log.Timber;
 
 
 public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragmentAdapter.CountryViewHolder> {
 
 
-    private List<Country> mCountryList;
+    private final List<Country> mCountryList;
     public static CountryFragmentAdapterOnItemClickListener mClickListener;
-    private Context mContext;
-    int selected_position = 0;
-    private Bundle mBundle;
-    private int mFragmentContainerId;
-
-
+    private final Context mContext;
 
 
     public CountryFragmentAdapter(Context context, List<Country> countryList, int fragmentContainerId) {
 
         this.mContext = context;
         this.mCountryList = countryList;
-        this.mFragmentContainerId = fragmentContainerId;
 
     }
 
 
     @Override
-    public @NotNull CountryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public @NotNull CountryViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
 
         CountryListItemBinding countryListItemBinding = CountryListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
 
-        CountryViewHolder viewHolder = new CountryViewHolder(countryListItemBinding);
-
-        return viewHolder;
+        return new CountryViewHolder(countryListItemBinding);
 
     }
 
@@ -62,9 +53,17 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
         holder.binding.countryItemCardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Timber.d("onClick: clicked on: %d", position);
+                Timber.d("onClick: country name: %s", country.getName());
+                Timber.d("onClick: country flag: %s", country.getFlag());
 
-               //TODO
-
+                MessageUtils.showAlertDialog(
+                        mContext,
+                        country.getName(),
+                        "The capital city of this country is "
+                                + country.getCapital()
+                                + "."
+                );
             }
         });
 
@@ -77,21 +76,6 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
                 .with(this.mContext)
                 .setPlaceHolder(R.drawable.border, R.drawable.ic_baseline_error_outline_24)  //loading,error
                 .load((uri), holder.binding.imageView);
-
-
-        holder.binding.countryItemCardview.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Timber.d("onClick: clicked on: %d", position);
-                Timber.d("onClick: country name: %s", country.getName());
-                Timber.d("onClick: country flag: %s", country.getFlag());
-
-
-            }
-
-        });
 
 
     }
@@ -113,7 +97,7 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
 
     public static class CountryViewHolder extends RecyclerView.ViewHolder  {
 
-        private CountryListItemBinding binding;
+        private final CountryListItemBinding binding;
 
         public CountryViewHolder(CountryListItemBinding countryListItemBinding) {
             super(countryListItemBinding.getRoot());
