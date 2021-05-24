@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.squareup.leakcanary.LeakCanary;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,7 +31,7 @@ public class MyApplication extends Application {
             //Release mode
             Timber.plant(new ReleaseLogTree());
         }
-        
+
 
     }
 
