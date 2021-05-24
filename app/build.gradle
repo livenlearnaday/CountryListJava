@@ -61,10 +61,6 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.3.0'
     androidTestImplementation 'androidx.test:runner:1.3.0'
 
-    def leakcany_android_version = "1.6.2"
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcany_android_version"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcany_android_version"
-
     //fragment testing
     def fragment_version = "1.2.5"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"

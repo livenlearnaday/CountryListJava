@@ -32,17 +32,7 @@ public class MyApplication extends Application {
             //Release mode
             Timber.plant(new ReleaseLogTree());
         }
-
-
-
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install((Application) getApplicationContext());
-        //Normal app init code..
-
+        
 
     }
 
