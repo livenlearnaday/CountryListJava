@@ -1,6 +1,5 @@
 package io.github.livenlearnaday.countrylistjava.ui.fragment_country.adapter;
 
-import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +20,10 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
 
     private final List<Country> mCountryList;
     public static CountryFragmentAdapterOnItemClickListener mClickListener;
-    private final Context mContext;
 
 
-    public CountryFragmentAdapter(Context context, List<Country> countryList, int fragmentContainerId) {
+    public CountryFragmentAdapter(List<Country> countryList, int fragmentContainerId) {
 
-        this.mContext = context;
         this.mCountryList = countryList;
 
     }
@@ -58,7 +55,7 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
                 Timber.d("onClick: country flag: %s", country.getFlag());
 
                 MessageUtils.showAlertDialog(
-                        mContext,
+                        holder.itemView.getContext(),
                         country.getName(),
                         "The capital city of this country is "
                                 + country.getCapital()
@@ -73,7 +70,7 @@ public class CountryFragmentAdapter extends RecyclerView.Adapter<CountryFragment
 
         GlideToVectorYou
                 .init()
-                .with(this.mContext)
+                .with(holder.itemView.getContext())
                 .setPlaceHolder(R.drawable.border, R.drawable.ic_baseline_error_outline_24)  //loading,error
                 .load((uri), holder.binding.imageView);
 

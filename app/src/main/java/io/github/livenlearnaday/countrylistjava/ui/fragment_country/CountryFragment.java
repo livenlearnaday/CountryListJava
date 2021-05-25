@@ -94,15 +94,16 @@ public class CountryFragment extends Fragment {
         binding.myToolbar.inflateMenu(R.menu.menu_country_fragment);
 
         binding.myToolbar.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
 
-                case R.id.refresh_menu:
-                    getCountryListData();
-                    return true;
+            if (item.getItemId() == R.id.refresh_menu) {
+                
+                getCountryListData();
+                return true;
 
+            } else {
 
-                default:
-                    return false;
+                return false;
+
             }
         });
 
@@ -145,7 +146,7 @@ public class CountryFragment extends Fragment {
     /*Method to generate List of data using RecyclerView with custom adapter*/
     private void generateDataList(List<Country> countryList) {
 
-        CountryFragmentAdapter mCountryFragmentAdapter = new CountryFragmentAdapter(getActivity(), countryList, mFragmentContainerId);
+        CountryFragmentAdapter mCountryFragmentAdapter = new CountryFragmentAdapter(countryList, mFragmentContainerId);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setLayoutManager(layoutManager);
         binding.recyclerView.setAdapter(mCountryFragmentAdapter);
